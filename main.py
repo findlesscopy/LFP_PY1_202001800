@@ -32,9 +32,13 @@ def boton_aceptarTexto_command():
 def boton_buscar_reporte():
     opcion = lista_reportes.get()
     if opcion == "Reporte de token":
-        print("Reporte de token ")
+        texto = text_area.get(1.0,'end')
+        lexico = Analizador(texto)
+        lexico.ReporteToken()
     elif opcion == "Reporte de errores":
-        print("Reporte de errores")
+        texto = text_area.get(1.0,'end')
+        lexico = Analizador(texto)
+        lexico.ReporteErrores()
     elif opcion == "Manual de Usuarios":
         print("Manual de Usuarios")
     elif opcion == "Manual Técnico":

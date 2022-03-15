@@ -1,4 +1,6 @@
 from Token import Token
+from tkinter import messagebox
+import webbrowser
 
 class Analizador:
     #Guarda lo que llevo
@@ -178,3 +180,71 @@ class Analizador:
         for x in self.tokens:
             if x.tipo == tipos.UNKNOWN:
                 print(x.getLexema()," --> ",x.getFila(), ' --> ',x.getColumna(),'--> Error Lexico')
+    
+    def ReporteToken(self):
+        
+        messagebox.showinfo(message="Se ha genera el reporte de token", title="Reporte")
+        f = open('Reporte Token.html','w')
+        f.write("<!doctype html>")
+        f.write("<html lang=\"en\">")
+        f.write("<head>")
+        
+        f.write(" <meta charset=\"utf-8\">")
+        f.write("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">")
+        f.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">")
+        f.write("<title>Reporte del Tokens</title>")
+        f.write("<style>"
+            "body {background-color: #F5EFB1;font-family: \"Lucida Console\", \"Courier New\", monospace;}"
+            "h1 {background-color: #87DABF;}"
+            "table, th, td {border: 1px solid black; text-align: center}""</style>")
+        f.write("</head>")
+        f.write("<body>")
+        f.write("<H1><center>REPORTE DE TOKENS</center></H1>")
+        f.write("<center><table><tr><th>No. </th><th>Símbolo</th><th>Tipo</th><th>Fila</th><th>Columna</th>")
+        tipos = Token("lexema", -1, -1, -1)
+        i=0
+        for x in self.tokens:
+            i+=1
+            if x.tipo != tipos.UNKNOWN:
+                f.write("<tr>")
+                f.write("<center><td><h4>" + str(i) + "</td></h4>"+"<td><h4>" + str(x.getLexema() ) +"</td></h4>"+"<td><h4>" + str(x.getTipo() ) +"</td></h4>"+ "<td><h4>" + str(x.getFila()) +"</td></h4>"+ "<td><h4>" + str(x.getColumna()) +"</td></h4>"+"</center>")
+                f.write("</tr>")
+        f.write("</table></center>")
+        f.write("</body>")
+        f.write("</html>")
+        f.close()
+        webbrowser.open('Reporte Token.html') 
+
+    def ReporteErrores(self):
+        messagebox.showinfo(message="Se ha genera el reporte de errores", title="Reporte")
+        f = open('Reporte Errores.html','w')
+        f.write("<!doctype html>")
+        f.write("<html lang=\"en\">")
+        f.write("<head>")
+        
+        f.write(" <meta charset=\"utf-8\">")
+        f.write("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">")
+        f.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">")
+        f.write("<title>Reporte del Tokens</title>")
+        f.write("<style>"
+            "body {background-color: #F5EFB1;font-family: \"Lucida Console\", \"Courier New\", monospace;}"
+            "h1 {background-color: #87DABF;}"
+            "table, th, td {border: 1px solid black; text-align: center}""</style>")
+        f.write("</head>")
+        f.write("<body>")
+        f.write("<H1><center>REPORTE DE TOKENS</center></H1>")
+        #TABLA DE PRODUCTOS ASCENDENTE
+        f.write("<center><table><tr><th>No. </th><th>Símbolo</th><th>Tipo</th><th>Fila</th><th>Columna</th>")
+        tipos = Token("lexema", -1, -1, -1)
+        i=0
+        for x in self.tokens:
+            i+=1
+            if x.tipo == tipos.UNKNOWN:
+                f.write("<tr>")
+                f.write("<center><td><h4>" + str(i) + "</td></h4>"+"<td><h4>" + str(x.getLexema() ) +"</td></h4>"+"<td><h4>" + str(x.getTipo() ) +"</td></h4>"+ "<td><h4>" + str(x.getFila()) +"</td></h4>"+ "<td><h4>" + str(x.getColumna()) +"</td></h4>"+"</center>")
+                f.write("</tr>")
+        f.write("</table></center>")
+        f.write("</body>")
+        f.write("</html>")
+        f.close()
+        webbrowser.open('Reporte Errores.html') 
