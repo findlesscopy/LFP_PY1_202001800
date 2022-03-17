@@ -17,6 +17,8 @@ def boton_analizar_command():
     lexico = Analizador(texto)
     lexico.Imprimir()
     lexico.ImprimirErrores()
+    """lexico.generarFormulario()"""
+    lexico.Prueba()
 
 
 def boton_aceptarTexto_command():
@@ -47,6 +49,7 @@ def boton_buscar_reporte():
         None
 
 root = Tk()
+root.title("Menú Principal")
 ft = tkFont.Font(family='Tahoma',size=10)
 
 

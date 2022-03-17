@@ -1,5 +1,5 @@
 class Token():
-    lexema_valido = ''
+    lexema = ''
     tipo = 0
     fila = 0
     columna = 0
@@ -25,13 +25,13 @@ class Token():
 
     #Constructor de la clase
     def __init__(self,lexema,tipo,fila,columna):
-        self.lexema_valido = lexema
+        self.lexema = lexema
         self.tipo = tipo
         self.fila = fila
         self.columna = columna
 
     def getLexema(self):
-        return self.lexema_valido
+        return self.lexema
 
     def getFila(self):
         return self.fila
