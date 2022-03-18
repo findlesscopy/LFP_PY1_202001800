@@ -17,8 +17,9 @@ def boton_analizar_command():
     lexico = Analizador(texto)
     lexico.Imprimir()
     lexico.ImprimirErrores()
-    """lexico.generarFormulario()"""
-    lexico.Prueba()
+    lexico.GuardarDatos()
+    lexico.generarFormulario1()
+    
 
 
 def boton_aceptarTexto_command():

@@ -5,8 +5,8 @@ formulario ~>>[
     >,
     <
         tipo: "texto",
-        valor: "Nombre",
-        fondo: "Ingrese Nombre"
+        fondo: "Ingrese Nombre",
+        valor: "Nombre"
     >,
     <
         tipo: "grupo-radio",
@@ -25,6 +25,7 @@ formulario ~>>[
     >
 ]
 %
+
 
 
 

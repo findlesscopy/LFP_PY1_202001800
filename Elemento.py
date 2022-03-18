@@ -10,4 +10,4 @@ class Elemento:
 
 
     def __repr__(self):
-        return f'\Tipo {self.tipo} Valor {self.valor} Fondo {self.fondo} Valores {self.valores} Evento {self.evento} Nombre {self.fondo}'
+        return f'\n Tipo {self.tipo} Valor {self.valor} Fondo {self.fondo} Valores {self.valores} Evento {self.evento} Nombre {self.nombre}'
