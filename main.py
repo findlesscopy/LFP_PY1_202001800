@@ -5,6 +5,7 @@ import tkinter.font as tkFont
 from tkinter import filedialog
 from helpers import Lector_Archivos
 from Analizador import Analizador
+import webbrowser
 
 
 def boton_cargaArchivo_command():
@@ -43,7 +44,7 @@ def boton_buscar_reporte():
         lexico = Analizador(texto)
         lexico.ReporteErrores()
     elif opcion == "Manual de Usuarios":
-        print("Manual de Usuarios")
+        webbrowser.open('Manual de Usuario.pdf') 
     elif opcion == "Manual Técnico":
         print("Manual Técnico")
     else:
