@@ -100,13 +100,17 @@ class Analizador:
                 elif actual == '\t':
                     self.columna += 5
                     self.estado = 1
-                elif actual == '$' and i ==longitud - 1:
+                elif actual == '$':
                     print('Analisis terminado')
+                    continue
                 else:
                     self.lexema += actual
                     self.AddToken(tipos.UNKNOWN)
                     self.columna += 1
                     self.generar = False
+                    messagebox.showinfo(message="Ha ocurrido un error", title="Error")
+                    self.lexema = ''
+                    
             #Manejo de Letras 
             elif self.estado == 2:
                 if actual.isalpha():
@@ -360,110 +364,121 @@ class Analizador:
         #print(repr(self.elementos))
             
     def generarFormulario1(self):
-        messagebox.showinfo(message="Se ha genera el Formulario", title="Formularios.io")
-        f = open('Formulario.html','w')
-        f.write("<!doctype html>")
-        f.write("<html lang=\"en\">")
-        f.write("<head>")
-            
-        f.write(" <meta charset=\"utf-8\">")
-
-        f.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">")
-        f.write("<title>Formulario</title>")
-        f.write("<style>"
-            "@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');"      
-
-            "* {"
-            "box-sizing: border-box;"
-            "}"
-            "body {background-color: #edeef6;font-family: 'Poppins', sans-serif;display: flex;align-items: center;justify-content: center;min-height: 100vh;margin: 0;}"
-            "h1 {background-color: #87DABF;}"
-            "table, th, td {border: 1px solid black; text-align: center}"
-            "form { margin: 0 auto; width: 400px;padding: 1em;border: 1px solid #CCC; border-radius: 1em;}"
-            "ul {list-style: none;padding: 5;margin: 10;}"
-            "form li + li {margin-top: 1em;}"
-            "label {display: inline-block;width: 90px;text-align: right;}"
-            #"input{font: 1em sans-serif;width: 300px;box-sizing: border-box;border: 1px solid #999;}"
-            "input:focus,textarea:focus {border-color: #000;}"
-            "button {background-color: #47a386;border: 0;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);color: #fff;font-size: 14px;padding: 10px 25px;}"
-            ".modal-container {display: flex;background-color: rgba(0, 0, 0, 0.3);align-items: center;justify-content: center;position: fixed;pointer-events: none;opacity: 0;  top: 0;left: 0;height: 100vh;width: 100vw;transition: opacity 0.3s ease;}"
-            ".show {pointer-events: auto;opacity: 1;}"
-            ".modal {background-color: #fff;width: 600px;max-width: 100%;padding: 30px 50px;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);text-align: center;}"
-            ".modal h1 {margin: 0;}"
-            ".modal p {opacity: 0.7;font-size: 14px;}"
-            "</style>")
-        
-        f.write("</head>")
-        f.write("<script>")
-        f.write("function Mostrar(){")
-        f.write("alert('Info')")
-        f.write("}")
-        f.write("</script>")
-        f.write("<body>")
-        #f.write("<H1><center>Formulario</center></H1>")
-        
-        f.write("<ul>")
-        longitud = len(self.elementos)
+        tipos = Token("lexema", -1, -1, -1)
+        longitud = len(self.tokens)
         for i in range(longitud):
-            #print(self.elementos[i].tipo)
-        
-            if self.elementos[i].tipo == "etiqueta":
-                f.write("<li>")
-                f.write("<label>"+ self.elementos[i].valor +"</label>")
-                f.write("</li>")
-            if self.elementos[i].tipo == "texto":
-                f.write("<li>")
-                if self.elementos[i].valor !=None:
+            if self.tokens[i].tipo == tipos.UNKNOWN:
+                messagebox.showinfo(message="No se ha generado el Formulario", title="Formularios.io")
+                generar = False
+                break
+            else:
+                generar = True
+        if generar:
+            messagebox.showinfo(message="Se ha genera el Formulario", title="Formularios.io")
+            f = open('Formulario.html','w')
+            f.write("<!doctype html>")
+            f.write("<html lang=\"en\">")
+            f.write("<head>")
+                
+            f.write(" <meta charset=\"utf-8\">")
+
+            f.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">")
+            f.write("<title>Formulario</title>")
+            f.write("<style>"
+                "@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');"      
+
+                "* {"
+                "box-sizing: border-box;"
+                "}"
+                "body {background-color: #edeef6;font-family: 'Poppins', sans-serif;display: flex;align-items: center;justify-content: center;min-height: 100vh;margin: 0;}"
+                "h1 {background-color: #87DABF;}"
+                "table, th, td {border: 1px solid black; text-align: center}"
+                "form { margin: 0 auto; width: 400px;padding: 1em;border: 1px solid #CCC; border-radius: 1em;}"
+                "ul {list-style: none;padding: 5;margin: 10;}"
+                "form li + li {margin-top: 1em;}"
+                "label {display: inline-block;width: 90px;text-align: right;}"
+                #"input{font: 1em sans-serif;width: 300px;box-sizing: border-box;border: 1px solid #999;}"
+                "input:focus,textarea:focus {border-color: #000;}"
+                "button {background-color: #47a386;border: 0;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);color: #fff;font-size: 14px;padding: 10px 25px;}"
+                ".modal-container {display: flex;background-color: rgba(0, 0, 0, 0.3);align-items: center;justify-content: center;position: fixed;pointer-events: none;opacity: 0;  top: 0;left: 0;height: 100vh;width: 100vw;transition: opacity 0.3s ease;}"
+                ".show {pointer-events: auto;opacity: 1;}"
+                ".modal {background-color: #fff;width: 600px;max-width: 100%;padding: 30px 50px;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);text-align: center;}"
+                ".modal h1 {margin: 0;}"
+                ".modal p {opacity: 0.7;font-size: 14px;}"
+                "</style>")
+            
+            f.write("</head>")
+            f.write("<script>")
+            f.write("function Mostrar(){")
+            f.write("alert('Info')")
+            f.write("}")
+            f.write("</script>")
+            f.write("<body>")
+            #f.write("<H1><center>Formulario</center></H1>")
+            
+            f.write("<ul>")
+            longitud = len(self.elementos)
+            for i in range(longitud):
+                #print(self.elementos[i].tipo)
+            
+                if self.elementos[i].tipo == "etiqueta":
+                    f.write("<li>")
                     f.write("<label>"+ self.elementos[i].valor +"</label>")
-                else:
-                    None
-                f.write("<input type='text' name='Name' placeholder = "+ self.elementos[i].fondo +" />")
-                f.write("</li>")
-            if self.elementos[i].tipo == "grupo-radio":
-                f.write("<li>")
-                if self.elementos[i].nombre !=None:
-                    f.write("<label>"+ self.elementos[i].nombre +"</label>")
-                else:
-                    None
-                opcion = self.elementos[i].valores
-                #print(opcion)
-                for x in opcion:
-                    f.write("<input type='radio'>"+ x +"")
-                f.write("</li>")
-            if self.elementos[i].tipo == "grupo-option":
-                f.write("<li>")
-                if self.elementos[i].nombre !=None:
-                    f.write("<label>"+ self.elementos[i].nombre +"</label>")
-                else:
-                    None
-                opcion = self.elementos[i].valores
-                #print(opcion)
-                f.write("<select >")
-                for x in opcion:
-                    f.write("<option>"+x+"</option>")
-                f.write("</select>")
-                f.write("</li>")
-            if self.elementos[i].tipo == "boton":
-                f.write("<li>")
-                if self.elementos[i].evento == "entrada":
-                    f.write("<button id='open'>"+ self.elementos[i].valor +"</button>")
-                    f.write("<div id='modal_container' class='modal-container'>")
-                    f.write("<div class='modal'>")
-                    f.write("<h1>Ventana Modal</h1>")
-                    f.write("<p>")
-                    f.write(self.entrada2)
-                    f.write("</p>")
-                    f.write("<button id='close'>Cerrar</button>")
-                    f.write("</div>")
-                    f.write("</div>")
-                elif self.elementos[i].evento == "info":
-                    f.write("<button onclick='Mostrar();'>"+ self.elementos[i].valor +"</button>")
-                f.write("</li>")
+                    f.write("</li>")
+                if self.elementos[i].tipo == "texto":
+                    f.write("<li>")
+                    if self.elementos[i].valor !=None:
+                        f.write("<label>"+ self.elementos[i].valor +"</label>")
+                    else:
+                        None
+                    f.write("<input type='text' name='Name' placeholder = "+ self.elementos[i].fondo +" />")
+                    f.write("</li>")
+                if self.elementos[i].tipo == "grupo-radio":
+                    f.write("<li>")
+                    if self.elementos[i].nombre !=None:
+                        f.write("<label>"+ self.elementos[i].nombre +"</label>")
+                    else:
+                        None
+                    opcion = self.elementos[i].valores
+                    #print(opcion)
+                    for x in opcion:
+                        f.write("<input type='radio'>"+ x +"")
+                    f.write("</li>")
+                if self.elementos[i].tipo == "grupo-option":
+                    f.write("<li>")
+                    if self.elementos[i].nombre !=None:
+                        f.write("<label>"+ self.elementos[i].nombre +"</label>")
+                    else:
+                        None
+                    opcion = self.elementos[i].valores
+                    #print(opcion)
+                    f.write("<select >")
+                    for x in opcion:
+                        f.write("<option>"+x+"</option>")
+                    f.write("</select>")
+                    f.write("</li>")
+                if self.elementos[i].tipo == "boton":
+                    f.write("<li>")
+                    if self.elementos[i].evento == "entrada":
+                        f.write("<button id='open'>"+ self.elementos[i].valor +"</button>")
+                        f.write("<div id='modal_container' class='modal-container'>")
+                        f.write("<div class='modal'>")
+                        f.write("<h1>Ventana Modal</h1>")
+                        f.write("<p>")
+                        f.write(self.entrada2)
+                        f.write("</p>")
+                        f.write("<button id='close'>Cerrar</button>")
+                        f.write("</div>")
+                        f.write("</div>")
+                    elif self.elementos[i].evento == "info":
+                        f.write("<button onclick='Mostrar();'>"+ self.elementos[i].valor +"</button>")
+                    f.write("</li>")
             
-        f.write("</ul>")
-        f.write("<script src='app.js'></script>")
-        f.write("</body>")
-        f.write("</html>")
-        f.close()
-        webbrowser.open('Formulario.html') 
-            
+            f.write("</ul>")
+            f.write("<script src='app.js'></script>")
+            f.write("</body>")
+            f.write("</html>")
+            f.close()
+            self.elementos.clear()
+            webbrowser.open('Formulario.html') 
+                

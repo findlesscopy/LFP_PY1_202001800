@@ -21,10 +21,11 @@ formulario ~>>[
     <
         tipo: "boton",
         valor: "Valor",
-        evento: info
+        evento: entrada
     >
 ]
-%
+
+
 
 
 
