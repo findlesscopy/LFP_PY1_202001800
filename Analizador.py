@@ -155,7 +155,6 @@ class Analizador:
     
     def Reservada(self):
         palabra = self.lexema.upper();
-        #lista_palabras = ['NOMBRE', 'GRAFICA','TITULO','TITULOX','TITULOY']
         if palabra == 'TIPO':
             self.tipo = Token.TIPO  
             return True
@@ -422,19 +421,19 @@ class Analizador:
                 #print(self.elementos[i].tipo)
             
                 if self.elementos[i].tipo == "etiqueta":
-                    f.write("<li>")
+                    f.write("<br><li>")
                     f.write("<label>"+ self.elementos[i].valor +"</label>")
-                    f.write("</li>")
+                    f.write("</br></li>")
                 if self.elementos[i].tipo == "texto":
-                    f.write("<li>")
+                    f.write("<br><li>")
                     if self.elementos[i].valor !=None:
-                        f.write("<label>"+ self.elementos[i].valor +"</label>")
+                        f.write("<label><p>"+ self.elementos[i].valor +"</p></label>")
                     else:
                         None
                     f.write("<input type='text' name='Name' placeholder = "+ self.elementos[i].fondo +" />")
-                    f.write("</li>")
+                    f.write("</br></li>")
                 if self.elementos[i].tipo == "grupo-radio":
-                    f.write("<li>")
+                    f.write("<br><li>")
                     if self.elementos[i].nombre !=None:
                         f.write("<label>"+ self.elementos[i].nombre +"</label>")
                     else:
@@ -443,9 +442,9 @@ class Analizador:
                     #print(opcion)
                     for x in opcion:
                         f.write("<input type='radio'>"+ x +"")
-                    f.write("</li>")
+                    f.write("</br></li>")
                 if self.elementos[i].tipo == "grupo-option":
-                    f.write("<li>")
+                    f.write("<br><li>")
                     if self.elementos[i].nombre !=None:
                         f.write("<label>"+ self.elementos[i].nombre +"</label>")
                     else:
@@ -456,11 +455,11 @@ class Analizador:
                     for x in opcion:
                         f.write("<option>"+x+"</option>")
                     f.write("</select>")
-                    f.write("</li>")
+                    f.write("</br></li>")
                 if self.elementos[i].tipo == "boton":
-                    f.write("<li>")
+                    f.write("<br><li>")
                     if self.elementos[i].evento == "entrada":
-                        f.write("<button id='open'>"+ self.elementos[i].valor +"</button>")
+                        f.write("<center><button id='open'>"+ self.elementos[i].valor +"</button></center>")
                         f.write("<div id='modal_container' class='modal-container'>")
                         f.write("<div class='modal'>")
                         f.write("<h1>Entrada</h1>")
@@ -472,7 +471,7 @@ class Analizador:
                         f.write("</div>")
                     elif self.elementos[i].evento == "info":
                         f.write("<button onclick='Mostrar();'>"+ self.elementos[i].valor +"</button>")
-                    f.write("</li>")
+                    f.write("</br></li>")
             
             f.write("</ul>")
             f.write("<script src='app.js'></script>")

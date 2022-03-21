@@ -46,7 +46,7 @@ def boton_buscar_reporte():
     elif opcion == "Manual de Usuarios":
         webbrowser.open('Manual de Usuario.pdf') 
     elif opcion == "Manual Técnico":
-        print("Manual Técnico")
+        webbrowser.open('Manual Tecnico.pdf')
     else:
         None
 

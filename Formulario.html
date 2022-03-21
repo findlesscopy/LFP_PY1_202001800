@@ -1,12 +1,30 @@
-<!doctype html><html lang="en"><head> <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Formulario</title><style>@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');* {box-sizing: border-box;}body {background-color: #edeef6;font-family: 'Poppins', sans-serif;display: flex;align-items: center;justify-content: center;min-height: 100vh;margin: 0;}h1 {background-color: #87DABF;}table, th, td {border: 1px solid black; text-align: center}form { margin: 0 auto; width: 400px;padding: 1em;border: 1px solid #CCC; border-radius: 1em;}ul {list-style: none;padding: 5;margin: 10;}form li + li {margin-top: 1em;}label {display: inline-block;width: 90px;text-align: right;}input:focus,textarea:focus {border-color: #000;}button {background-color: #47a386;border: 0;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);color: #fff;font-size: 14px;padding: 10px 25px;}.modal-container {display: flex;background-color: rgba(0, 0, 0, 0.3);align-items: center;justify-content: center;position: fixed;pointer-events: none;opacity: 0;  top: 0;left: 0;height: 100vh;width: 100vw;transition: opacity 0.3s ease;}.show {pointer-events: auto;opacity: 1;}.modal {background-color: #fff;width: 600px;max-width: 100%;padding: 30px 50px;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);text-align: center;}.modal h1 {margin: 0;}.modal p {opacity: 0.7;font-size: 14px;}</style></head><script>function Mostrar(){alert('Info')}</script><body><ul><li><label>Nombre:</label></li><li><label>Nombre</label><input type='text' name='Name' placeholder = Ingrese Nombre /></li><li><label>sexo</label><input type='radio'>Masculino<input type='radio'>Femenino</li><li><label>pais</label><select ><option>Guatemala</option><option>El Salvador</option><option>Honduras</option></select></li><li><button id='open'>Valor</button><div id='modal_container' class='modal-container'><div class='modal'><h1>Entrada</h1><p>formulario ~>>[
+<!doctype html><html lang="en"><head> <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Formulario</title><style>@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');* {box-sizing: border-box;}body {background-color: #edeef6;font-family: 'Poppins', sans-serif;display: flex;align-items: center;justify-content: center;min-height: 100vh;margin: 0;}h1 {background-color: #87DABF;}table, th, td {border: 1px solid black; text-align: center}form { margin: 0 auto; width: 400px;padding: 1em;border: 1px solid #CCC; border-radius: 1em;}ul {list-style: none;padding: 5;margin: 10;}form li + li {margin-top: 1em;}label {display: inline-block;width: 90px;text-align: right;}input:focus,textarea:focus {border-color: #000;}button {background-color: #47a386;border: 0;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);color: #fff;font-size: 14px;padding: 10px 25px;}.modal-container {display: flex;background-color: rgba(0, 0, 0, 0.3);align-items: center;justify-content: center;position: fixed;pointer-events: none;opacity: 0;  top: 0;left: 0;height: 100vh;width: 100vw;transition: opacity 0.3s ease;}.show {pointer-events: auto;opacity: 1;}.modal {background-color: #fff;width: 600px;max-width: 100%;padding: 30px 50px;border-radius: 5px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);text-align: center;}.modal h1 {margin: 0;}.modal p {opacity: 0.7;font-size: 14px;}</style></head><script>function Mostrar(){alert('Info')}</script><body><ul><br><li><label>Nombre:</label></br></li><br><li><label>Saludos humano</label></br></li><br><li><label>Putoo</label></br></li><br><li><label><p>Nombre</p></label><input type='text' name='Name' placeholder = Ingrese Nombre /></br></li><br><li><label><p>Apellido</p></label><input type='text' name='Name' placeholder = Ingrese Nombre /></br></li><br><li><label><p>Zona</p></label><input type='text' name='Name' placeholder = Ingrese Nombre /></br></li><br><li><label>sexo</label><input type='radio'>Masculino<input type='radio'>Femenino</br></li><br><li><label>pais</label><select ><option>Guatemala</option><option>El Salvador</option><option>Honduras</option><option>Costa Rica</option><option>Panamá</option></select></br></li><br><li><center><button id='open'>Valor</button></center><div id='modal_container' class='modal-container'><div class='modal'><h1>Entrada</h1><p>formulario ~>>[
     <
         tipo: "etiqueta",
         valor: "Nombre:"
+    >,
+<
+        tipo: "etiqueta",
+        valor: "Saludos humano"
+    >,
+<
+        tipo: "etiqueta",
+        valor: "Putoo"
     >,
     <
         tipo: "texto",
         fondo: "Ingrese Nombre",
         valor: "Nombre"
+    >,
+<
+        tipo: "texto",
+        fondo: "Ingrese Nombre",
+        valor: "Apellido"
+    >,
+<
+        tipo: "texto",
+        fondo: "Ingrese Nombre",
+        valor: "Zona"
     >,
     <
         tipo: "grupo-radio",
@@ -16,12 +34,17 @@
     <
         tipo: "grupo-option",
         nombre: "pais",
-        valores: ['Guatemala', 'El Salvador', 'Honduras']
+        valores: ['Guatemala', 'El Salvador', 'Honduras','Costa Rica', 'Panamá','Belice']
     >,
     <
         tipo: "boton",
         valor: "Valor",
         evento: entrada
+    >,
+<
+        tipo: "boton",
+        valor: "Valor",
+        evento: info
     >
 ]
 
@@ -40,4 +63,4 @@
 
 
 
-</p><button id='close'>Cerrar</button></div></div></li></ul><script src='app.js'></script></body></html>
+</p><button id='close'>Cerrar</button></div></div></br></li><br><li><button onclick='Mostrar();'>Valor</button></br></li></ul><script src='app.js'></script></body></html>
