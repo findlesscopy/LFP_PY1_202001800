@@ -463,7 +463,7 @@ class Analizador:
                         f.write("<button id='open'>"+ self.elementos[i].valor +"</button>")
                         f.write("<div id='modal_container' class='modal-container'>")
                         f.write("<div class='modal'>")
-                        f.write("<h1>Ventana Modal</h1>")
+                        f.write("<h1>Entrada</h1>")
                         f.write("<p>")
                         f.write(self.entrada2)
                         f.write("</p>")
