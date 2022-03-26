@@ -459,7 +459,7 @@ class Analizador:
                 if self.elementos[i].tipo == "boton":
                     f.write("<br><li>")
                     if self.elementos[i].evento == "entrada":
-                        f.write("<center><button id='open'>"+ self.elementos[i].valor +"</button></center>")
+                        f.write("<center><button id='open'>"+ str(self.elementos[i].valor) +"</button></center>")
                         f.write("<div id='modal_container' class='modal-container'>")
                         f.write("<div class='modal'>")
                         f.write("<h1>Entrada</h1>")
